@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Al-Muhsi | Solapur's Iconic Shawarma & Cafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4AF37; /* Metallic Gold */
+            --bg: #080808;
+            --surface: #121212;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --gradient: linear-gradient(135deg, #D4AF37 0%, #F2D06B 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Luxe */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 10%;
+            background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .nav-right a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-right a:hover { color: var(--primary); }
+
+        /* Hero: The Statement */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(4rem, 15vw, 10rem);
+            line-height: 0.9;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* The "Social Proof" Strip */
+        .trust-strip {
+            background: var(--surface);
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-item h2 { font-family: 'Bebas Neue'; font-size: 3rem; color: var(--primary); }
+        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+
+        /* Menu Gallery */
+        .section-padding { padding: 100px 10%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 { font-family: 'Cinzel'; font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title div { width: 50px; height: 3px; background: var(--primary); margin: 0 auto; }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .menu-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+        .img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .menu-card:hover img { scale: 1.1; }
+
+        .card-body { padding: 25px; }
+        .card-body h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .card-body p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        
+        .price-tag {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-btn {
+            background: var(--gradient);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        /* Reviews & Location */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+        }
+
+        .location-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 30px;
+        }
+
+        iframe { border-radius: 20px; width: 100%; height: 300px; filter: grayscale(1) invert(0.9); border: none; margin-top: 20px;}
+
+        /* Footer */
+        footer {
+            padding: 60px 10%;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .social-icons a {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-right { display: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">AL-MUHSI</a>
+        <div class="nav-right">
+            <a href="#menu">THE MENU</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#location">FIND US</a>
+            <a href="tel:07071724545" style="border: 1px solid var(--primary); padding: 8px 20px; border-radius: 5px;">CALL: 070717 24545</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p>Mastering the art of flavors</p>
+            <h1>CAFE <br>AL-MUHSI</h1>
+            <a href="#menu" class="order-btn" style="padding: 15px 40px; font-size: 1rem;">View Gourmet Menu</a>
+        </div>
+    </section>
+
+    <section class="trust-strip">
+        <div class="stat-item">
+            <h2>1.2K+</h2>
+            <p>Google Reviews</p>
+        </div>
+        <div class="stat-item">
+            <h2>4.1 ⭐</h2>
+            <p>Rating</p>
+        </div>
+        <div class="stat-item">
+            <h2>2.2K+</h2>
+            <p>Instagram Fans</p>
+        </div>
+    </section>
+
+    <section id="menu" class="section-padding">
+        <div class="section-title">
+            <h2>CURATED HIGHLIGHTS</h2>
+            <div></div>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?q=80&w=800" alt="Burger">
+                </div>
+                <div class="card-body">
+                    <h3>Smokey Chicken Burger</h3>
+                    <p>Char-grilled chicken breast with a signature hickory sauce and melted cheddar.</p>
+                    <div class="price-tag">
+                        ₹149.00
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?q=80&w=800" alt="Shawarma">
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Crunchy Roll</h3>
+                    <p>Our top-voted classic. Hand-rolled with premium spices and that signature crunch.</p>
+                    <div class="price-tag">
+                        ₹169.00
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?q=80&w=800" alt="Sides">
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Popcorn Shawarma</h3>
+                    <p>A deconstructed masterpiece. Bite-sized crispy chicken inside a soft Khubooz.</p>
+                    <div class="price-tag">
+                        ₹189.00
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?q=80&w=800" alt="Rice Bowl">
+                </div>
+                <div class="card-body">
+                    <h3>Kolhapuri Paneer Bowl</h3>
+                    <p>Spicy, authentic Kolhapuri gravy served with steaming buttered rice.</p>
+                    <div class="price-tag">
+                        ₹175.00
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800" alt="Pizza">
+                </div>
+                <div class="card-body">
+                    <h3>A D Special Chicken Pizza</h3>
+                    <p>Thin crust, loaded with spice-marinated chicken and 3 types of cheese.</p>
+                    <div class="price-tag">
+                        ₹130.00
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1528733918455-5a59687cedf0?q=80&w=800" alt="Sandwich">
+                </div>
+                <div class="card-body">
+                    <h3>Chocolate Sandwich</h3>
+                    <p>The ultimate dessert. Gooey melted chocolate between golden toasted brioche.</p>
+                    <div class="price-tag">
+                        ₹50.00+
+                        <a href="tel:07071724545" class="order-btn">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section-padding" style="background: #000;">
+        <div class="contact-grid">
+            <div class="location-card">
+                <h2 style="font-family: 'Cinzel'; margin-bottom: 20px;">VISIT THE <span class="orange-text">CAFE</span></h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Located in the heart of Solapur, providing the best Shawarma categories in 16pur. Join us for outdoor seating and an all-you-can-eat experience.</p>
+                
+                <p><strong>ADDRESS:</strong> Matoshri Ramabai Ambedkar Marg, Sainath Nagar, Solapur 413003</p>
+                <p style="margin-top: 10px;"><strong>HOURS:</strong> 12:00 PM - 10:30 PM (Daily)</p>
+                
+                <iframe src="http://googleusercontent.com/maps.google.com/4"></iframe>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <h3 style="font-family: 'Cinzel'; margin-bottom: 20px;">RESERVATIONS</h3>
+                <p style="font-size: 2rem; font-weight: 800; color: var(--primary);">070717 24545</p>
+                <p style="color: var(--text-muted); margin-top: 10px;">Call for Home Delivery & Bulk Orders</p>
+                
+                <div class="social-icons" style="margin-top: 40px;">
+                    <p style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px;">FOLLOW OUR JOURNEY</p>
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                    <a href="#">YT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--primary); font-family: 'Cinzel'; letter-spacing: 2px; margin-bottom: 10px;">CAFE AL-MUHSI</p>
+        <p style="font-size: 0.7rem; color: #444;">© 2026 Cafe Al-Muhsi Solapur. All rights reserved. Designed for Premium Taste by Gaurav.</p>
+    </footer>
+
+    <script>
+        // Simple Scroll Reveal Effect
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.menu-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 50) {
+                    card.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
